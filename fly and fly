@@ -1,0 +1,42 @@
+local WhileLoopConveyor = Instance.new("ScreenGui")
+local TextButton = Instance.new("TextButton")
+local activatetext = 'activate'
+local unactivatetext = 'unactivate'
+WhileLoopConveyor.ResetOnSpawn = false
+WhileLoopConveyor.Name = "WhileLoopConveyor"
+WhileLoopConveyor.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+WhileLoopConveyor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+TextButton.Parent = WhileLoopConveyor
+TextButton.BackgroundColor3 = Color3.fromRGB(136, 255, 123)
+TextButton.BackgroundTransparency = 0.500
+TextButton.Position = UDim2.new(0, 0, 0.736940324, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "customize activate text"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+local function GUFGTPJ_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+	script.Parent.Text = activatetext
+	local hum = game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart')
+	local q = false
+	script.Parent.MouseButton1Click:Connect(function()
+		if q == false then
+			q = true
+			script.Parent.Text = unactivatetext
+			while q == true do
+				wait()
+				hum.CFrame = hum.CFrame + Vector3.new(-75000,0,0)
+				if q == false then
+					break
+				end
+			end
+		else
+			q = false
+			script.Parent.Text = activatetext
+		end
+	end)
+end
+coroutine.wrap(GUFGTPJ_fake_script)()
